@@ -2,277 +2,389 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07090d">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05070b">
 <meta name="description" content="TY7z — socials, profiles and links.">
 <title>TY7z | Socials</title>
 
 <style>
 :root{
-  --bg:#06080c;
-  --bg2:#0a0d13;
-  --glass:rgba(255,255,255,.045);
-  --glass2:rgba(255,255,255,.025);
-  --line:rgba(255,255,255,.09);
-  --line2:rgba(255,255,255,.15);
+  --bg:#05070b;
+  --bg2:#090d13;
+  --panel:rgba(255,255,255,.045);
+  --panel2:rgba(255,255,255,.022);
+  --panel3:rgba(255,255,255,.07);
+  --line:rgba(255,255,255,.085);
+  --line-strong:rgba(255,255,255,.15);
   --text:#f7f9fc;
-  --muted:#98a3b3;
-  --accent:#8bd8ff;
-  --accent2:#ae8cff;
-  --good:#88f7ad;
-  --shadow:0 30px 90px rgba(0,0,0,.45);
-  --radius:24px;
-  --max:980px;
+  --muted:#9aa5b5;
+  --muted2:#6f7c8f;
+  --accent:#8edcff;
+  --accent2:#b69cff;
+  --accent3:#d7f3ff;
+  --good:#8ff6b2;
+  --shadow:0 30px 95px rgba(0,0,0,.48);
+  --shadow-soft:0 12px 38px rgba(0,0,0,.24);
+  --radius:26px;
+  --radius-sm:17px;
+  --max:1080px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
   min-height:100vh;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(142,220,255,.10),transparent 28rem),
+    radial-gradient(circle at 88% 12%,rgba(182,156,255,.09),transparent 32rem),
+    radial-gradient(circle at 50% 100%,rgba(142,220,255,.045),transparent 34rem),
+    linear-gradient(180deg,#05070b 0%,#090c12 50%,#05070b 100%);
   color:var(--text);
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:
-    radial-gradient(circle at 15% 10%,rgba(139,216,255,.10),transparent 28rem),
-    radial-gradient(circle at 85% 12%,rgba(174,140,255,.09),transparent 30rem),
-    radial-gradient(circle at 50% 100%,rgba(139,216,255,.05),transparent 32rem),
-    linear-gradient(180deg,#07090d 0%,#090c12 52%,#06080c 100%);
+  line-height:1.55;
   overflow-x:hidden;
 }
 body::before{
   content:"";
-  position:fixed;inset:0;z-index:-2;pointer-events:none;
+  position:fixed;inset:0;z-index:-3;pointer-events:none;
   background-image:
-    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-  background-size:46px 46px;
-  mask-image:linear-gradient(to bottom,black,transparent 80%);
+    linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,black 0%,rgba(0,0,0,.9) 35%,transparent 82%);
 }
 body::after{
   content:"";
-  position:fixed;
-  width:420px;height:420px;border-radius:50%;
-  right:-170px;top:22%;
-  background:radial-gradient(circle,rgba(174,140,255,.10),transparent 66%);
-  filter:blur(10px);
-  pointer-events:none;z-index:-1;
+  position:fixed;inset:0;z-index:-4;pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 40%,rgba(142,220,255,.035),transparent 25rem),
+    radial-gradient(circle at 82% 64%,rgba(182,156,255,.035),transparent 28rem);
 }
 a{color:inherit}
-::selection{background:rgba(139,216,255,.25);color:#fff}
-.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+button{font:inherit}
+::selection{background:rgba(142,220,255,.26);color:#fff}
+.wrap{width:min(var(--max),calc(100% - 34px));margin-inline:auto}
+.blur-orb{
+  position:fixed;border-radius:50%;filter:blur(18px);pointer-events:none;z-index:-2;
+  opacity:.5
+}
+.orb-a{width:380px;height:380px;left:-170px;top:20%;background:radial-gradient(circle,rgba(142,220,255,.10),transparent 68%)}
+.orb-b{width:460px;height:460px;right:-220px;top:33%;background:radial-gradient(circle,rgba(182,156,255,.10),transparent 68%)}
+
+#cursorGlow{
+  position:fixed;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(142,220,255,.055),transparent 66%);
+  transform:translate(-50%,-50%);
+  pointer-events:none;z-index:-1;opacity:0;transition:opacity .25s ease;
+}
 
 .topbar{
-  position:fixed;top:0;left:0;right:0;z-index:20;
-  background:rgba(6,8,12,.55);
-  backdrop-filter:blur(18px);
+  position:fixed;left:0;right:0;top:0;z-index:30;
+  background:rgba(5,7,11,.45);
+  backdrop-filter:blur(22px) saturate(130%);
   border-bottom:1px solid transparent;
   transition:.25s ease;
 }
-.topbar.scrolled{border-color:var(--line);background:rgba(6,8,12,.78)}
-.topin{height:68px;display:flex;align-items:center;justify-content:space-between}
+.topbar.scrolled{
+  background:rgba(5,7,11,.78);
+  border-color:var(--line);
+}
+.topin{
+  height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px
+}
 .logo{
-  display:flex;align-items:center;gap:10px;text-decoration:none;
-  font-size:.88rem;font-weight:850;letter-spacing:.09em
+  display:flex;align-items:center;gap:11px;text-decoration:none;
+  font-weight:900;letter-spacing:.1em;font-size:.86rem
 }
 .logo-mark{
-  width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
-  background:linear-gradient(145deg,rgba(139,216,255,.20),rgba(174,140,255,.17));
+  width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(145deg,rgba(142,220,255,.20),rgba(182,156,255,.16));
   border:1px solid rgba(255,255,255,.12);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.1)
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 26px rgba(0,0,0,.22)
 }
+.top-actions{display:flex;align-items:center;gap:9px}
 .mini{
-  color:#aab4c3;font-size:.78rem;
-  padding:7px 10px;border:1px solid var(--line);border-radius:999px;
+  color:#aab5c5;font-size:.75rem;font-weight:800;letter-spacing:.12em;
+  padding:8px 11px;border:1px solid var(--line);border-radius:999px;
   background:rgba(255,255,255,.025)
 }
+.share-btn{
+  width:36px;height:36px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(255,255,255,.025);color:#a8b5c6;cursor:pointer;
+  display:grid;place-items:center;transition:.2s ease
+}
+.share-btn:hover{border-color:var(--line-strong);color:#fff;background:rgba(255,255,255,.05)}
+.share-btn svg{width:17px;height:17px}
 
 .hero{
-  padding:120px 0 54px;
+  padding:122px 0 40px;
   text-align:center;
 }
 .avatar-shell{
   position:relative;
-  width:168px;height:168px;margin:0 auto 24px;
+  width:176px;height:176px;margin:0 auto 25px;
 }
 .avatar-ring{
-  position:absolute;inset:-3px;border-radius:50%;
-  padding:1px;
-  background:linear-gradient(140deg,var(--accent),rgba(255,255,255,.2),var(--accent2));
-  box-shadow:0 0 50px rgba(139,216,255,.10),0 0 80px rgba(174,140,255,.08);
+  position:absolute;inset:-4px;border-radius:50%;
+  background:conic-gradient(from 180deg,var(--accent),rgba(255,255,255,.22),var(--accent2),var(--accent));
+  animation:ringSpin 12s linear infinite;
+  box-shadow:0 0 55px rgba(142,220,255,.08),0 0 95px rgba(182,156,255,.06)
 }
 .avatar-ring::after{
-  content:"";position:absolute;inset:1px;border-radius:50%;background:#0b0e14;
+  content:"";position:absolute;inset:2px;border-radius:50%;background:#080b10
 }
 .avatar{
-  position:absolute;inset:7px;border-radius:50%;overflow:hidden;z-index:2;
+  position:absolute;inset:8px;border-radius:50%;overflow:hidden;z-index:2;
   background:
-    radial-gradient(circle at 30% 20%,rgba(139,216,255,.16),transparent 38%),
-    linear-gradient(145deg,#111722,#0b1018);
+    radial-gradient(circle at 30% 20%,rgba(142,220,255,.16),transparent 36%),
+    linear-gradient(145deg,#101722,#0a0f16);
   border:1px solid rgba(255,255,255,.08);
   display:grid;place-items:center;
 }
+.avatar::after{
+  content:"";position:absolute;inset:0;
+  box-shadow:inset 0 0 50px rgba(0,0,0,.22);pointer-events:none
+}
 .avatar img{width:100%;height:100%;object-fit:cover;display:none}
-.avatar .fallback{
-  font-size:2.2rem;font-weight:900;letter-spacing:-.08em;color:#dcefff
+.fallback{
+  font-size:2.15rem;font-weight:950;letter-spacing:-.08em;color:#dff4ff
 }
 .online-dot{
-  position:absolute;z-index:3;right:9px;bottom:14px;
-  width:20px;height:20px;border-radius:50%;
-  background:var(--good);border:4px solid #0a0d13;
-  box-shadow:0 0 18px rgba(136,247,173,.35)
+  position:absolute;right:9px;bottom:14px;z-index:4;
+  width:21px;height:21px;border-radius:50%;
+  background:var(--good);border:4px solid #090d13;
+  box-shadow:0 0 0 5px rgba(143,246,178,.05),0 0 20px rgba(143,246,178,.35)
 }
 .eyebrow{
-  color:#aeb7c6;font-size:.76rem;text-transform:uppercase;
-  font-weight:800;letter-spacing:.16em;margin-bottom:10px
+  color:#a9b4c4;font-size:.74rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase
 }
 h1{
-  margin:0;
-  font-size:clamp(3.6rem,10vw,6.7rem);
-  line-height:.94;letter-spacing:-.07em;font-weight:850;
+  margin:8px 0 0;
+  font-size:clamp(4.1rem,11vw,7.1rem);
+  line-height:.88;letter-spacing:-.075em;font-weight:900;
   color:transparent;
-  background:linear-gradient(100deg,#fff 15%,#d8e4ef 48%,#9ccff8 82%,#c1a9ff);
+  background:linear-gradient(100deg,#fff 10%,#dfe9f3 46%,#9ed8ff 78%,#c6b0ff);
   -webkit-background-clip:text;background-clip:text;
+  text-shadow:0 0 80px rgba(142,220,255,.07)
 }
 .tag{
-  margin:15px auto 0;
-  color:#a4afbe;
-  max-width:550px;font-size:1.02rem
+  margin:17px auto 0;max-width:620px;
+  color:#a6b1c0;font-size:1.02rem
 }
 .chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px}
 .chip{
-  padding:7px 10px;border-radius:999px;border:1px solid var(--line);
-  color:#aab5c4;background:rgba(255,255,255,.025);font-size:.76rem;font-weight:650
+  position:relative;overflow:hidden;
+  padding:7px 11px;border-radius:999px;border:1px solid var(--line);
+  color:#aeb8c7;background:rgba(255,255,255,.024);
+  font-size:.75rem;font-weight:700
 }
+.chip::before{
+  content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);
+  transform:translateX(-100%)
+}
+.chip:hover::before{animation:shine .8s ease}
 
-.links{
-  padding:26px 0 88px;
+.stats{
+  margin:28px auto 0;
+  display:inline-grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--line);border-radius:18px;
+  background:rgba(255,255,255,.025);
+  overflow:hidden;box-shadow:var(--shadow-soft)
 }
-.grid{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:14px
+.stat{padding:14px 18px;min-width:120px}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat strong{display:block;font-size:.9rem}
+.stat span{display:block;margin-top:2px;color:var(--muted2);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+
+.section{
+  padding:30px 0 90px;
 }
+.section-head{
+  display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:18px
+}
+.section-head h2{margin:0;font-size:1.05rem;letter-spacing:-.015em}
+.section-head p{margin:0;color:var(--muted2);font-size:.8rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+
 .card{
   position:relative;overflow:hidden;
-  min-height:150px;
+  min-height:152px;padding:24px;
   display:flex;align-items:center;gap:18px;
-  padding:24px;
-  text-decoration:none;
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:linear-gradient(145deg,var(--glass),var(--glass2));
-  box-shadow:0 12px 36px rgba(0,0,0,.14);
-  transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
-  cursor:pointer;
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  box-shadow:0 14px 42px rgba(0,0,0,.15);
+  text-decoration:none;color:inherit;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+  isolation:isolate;
+}
+.card::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:0;
+  background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(142,220,255,.085),transparent 42%);
+  transition:opacity .22s ease
+}
+.card::after{
+  content:"";position:absolute;right:-60px;bottom:-95px;width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,rgba(182,156,255,.07),transparent 66%);z-index:-1
 }
 .card:hover{
   transform:translateY(-4px);
-  border-color:rgba(139,216,255,.22);
-  background:rgba(255,255,255,.055);
-  box-shadow:0 22px 50px rgba(0,0,0,.24);
+  border-color:rgba(142,220,255,.22);
+  background:rgba(255,255,255,.052);
+  box-shadow:0 24px 58px rgba(0,0,0,.26)
 }
-.card::after{
-  content:"";
-  position:absolute;width:150px;height:150px;border-radius:50%;
-  right:-65px;bottom:-95px;
-  background:radial-gradient(circle,rgba(139,216,255,.09),transparent 67%);
-  pointer-events:none;
-}
+.card:hover::before{opacity:1}
+button.card{width:100%;color:inherit;text-align:left;font:inherit;cursor:pointer}
+
 .icon{
-  flex:0 0 54px;width:54px;height:54px;border-radius:16px;
+  flex:0 0 56px;width:56px;height:56px;border-radius:17px;
   display:grid;place-items:center;
   border:1px solid rgba(255,255,255,.09);
-  background:rgba(255,255,255,.04);
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.028));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  transition:.2s ease
 }
+.card:hover .icon{transform:translateY(-1px) scale(1.02);border-color:rgba(255,255,255,.14)}
 .icon svg{width:26px;height:26px}
 .card-copy{min-width:0;flex:1}
 .label{
-  display:block;color:#758196;font-size:.7rem;font-weight:850;
-  text-transform:uppercase;letter-spacing:.13em;margin-bottom:5px
+  display:block;color:#748197;font-size:.68rem;font-weight:900;
+  text-transform:uppercase;letter-spacing:.14em;margin-bottom:5px
 }
-.name{display:block;font-size:1.12rem;font-weight:830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hint{display:block;color:#8f9aaa;font-size:.79rem;margin-top:4px}
+.name{
+  display:block;font-size:1.12rem;font-weight:850;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.hint{display:block;color:#8e9aab;font-size:.78rem;margin-top:4px}
 .arrow{
-  width:34px;height:34px;border-radius:11px;
-  display:grid;place-items:center;color:#95a2b4;
+  width:36px;height:36px;border-radius:12px;
+  display:grid;place-items:center;color:#97a4b7;
   border:1px solid var(--line);background:rgba(255,255,255,.025);
   transition:.2s ease
 }
-.card:hover .arrow{transform:translateX(2px);color:#fff;border-color:var(--line2)}
+.card:hover .arrow{transform:translateX(2px);color:#fff;border-color:var(--line-strong)}
 .arrow svg{width:16px;height:16px}
 
-.roblox-feature{
+.feature{
   margin-top:14px;
-  display:grid;grid-template-columns:1.15fr .85fr;
-  min-height:230px;
+  display:grid;grid-template-columns:1.1fr .9fr;
+  min-height:250px;
+  border:1px solid var(--line);border-radius:30px;overflow:hidden;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
+  box-shadow:var(--shadow-soft)
 }
-.roblox-feature .copy{
-  padding:34px;display:flex;flex-direction:column;justify-content:center
+.feature-copy{padding:36px;display:flex;flex-direction:column;justify-content:center}
+.feature h2{
+  margin:4px 0 11px;
+  font-size:clamp(1.8rem,4vw,2.7rem);
+  line-height:1;letter-spacing:-.045em
 }
-.roblox-feature h2{
-  font-size:clamp(1.6rem,4vw,2.6rem);
-  line-height:1;letter-spacing:-.045em;margin:4px 0 12px
+.feature p{margin:0;color:#9ca8b8;max-width:510px}
+.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.pill-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:40px;padding:0 13px;border-radius:12px;
+  border:1px solid var(--line);background:rgba(255,255,255,.03);
+  color:#dbe4ef;text-decoration:none;font-size:.8rem;font-weight:800;
+  transition:.2s ease
 }
-.roblox-feature p{color:#9ca7b7;margin:0;max-width:460px}
-.roblox-avatar-panel{
-  position:relative;overflow:hidden;display:grid;place-items:center;
-  min-height:230px;
+.pill-btn:hover{transform:translateY(-2px);border-color:var(--line-strong);background:rgba(255,255,255,.055)}
+.pill-btn svg{width:15px;height:15px}
+.avatar-panel{
+  position:relative;display:grid;place-items:center;min-height:250px;
   border-left:1px solid var(--line);
   background:
-    radial-gradient(circle at 50% 60%,rgba(139,216,255,.12),transparent 38%),
-    linear-gradient(145deg,rgba(255,255,255,.015),rgba(255,255,255,.04));
+    radial-gradient(circle at 50% 58%,rgba(142,220,255,.12),transparent 38%),
+    radial-gradient(circle at 78% 18%,rgba(182,156,255,.08),transparent 24%),
+    linear-gradient(145deg,rgba(255,255,255,.01),rgba(255,255,255,.035));
 }
-.roblox-avatar-panel img{
-  max-height:215px;max-width:92%;object-fit:contain;
-  filter:drop-shadow(0 22px 24px rgba(0,0,0,.35));
-  display:none;
+.avatar-panel::before{
+  content:"";position:absolute;inset:16px;border-radius:24px;border:1px solid rgba(255,255,255,.05);pointer-events:none
 }
-.roblox-fallback{font-size:1rem;color:#718095}
+.avatar-panel img{
+  max-height:232px;max-width:92%;object-fit:contain;display:none;
+  filter:drop-shadow(0 25px 28px rgba(0,0,0,.35));
+  animation:floaty 5s ease-in-out infinite
+}
+.avatar-fallback{color:#738196;font-size:.92rem}
+
+.footer{
+  border-top:1px solid var(--line);
+  padding:24px 0 34px;color:#687487;font-size:.76rem
+}
+.footerin{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.footer a{text-decoration:none;color:#8e9aab}
 
 .toast{
   position:fixed;left:50%;bottom:24px;z-index:50;
-  transform:translate(-50%,20px);
-  opacity:0;pointer-events:none;
-  padding:11px 15px;border-radius:12px;
-  background:rgba(16,21,30,.95);border:1px solid var(--line2);
-  color:#eef4fb;font-size:.85rem;font-weight:700;
-  box-shadow:var(--shadow);
+  transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  padding:11px 15px;border-radius:13px;
+  background:rgba(15,20,29,.96);border:1px solid var(--line-strong);
+  color:#eef4fb;font-size:.84rem;font-weight:800;
+  box-shadow:var(--shadow);backdrop-filter:blur(16px);
   transition:.25s ease
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
-footer{
-  border-top:1px solid var(--line);
-  padding:24px 0 34px;color:#687487;font-size:.77rem
-}
-.footerin{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .62s ease,transform .62s ease}
 .reveal.visible{opacity:1;transform:none}
 
-@media(max-width:760px){
+@keyframes ringSpin{to{transform:rotate(360deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes shine{to{transform:translateX(100%)}}
+
+@media(max-width:780px){
   .grid{grid-template-columns:1fr}
-  .roblox-feature{grid-template-columns:1fr}
-  .roblox-avatar-panel{border-left:0;border-top:1px solid var(--line)}
+  .feature{grid-template-columns:1fr}
+  .avatar-panel{border-left:0;border-top:1px solid var(--line)}
+  .stats{grid-template-columns:1fr;display:grid}
+  .stat+.stat{border-left:0;border-top:1px solid var(--line)}
 }
-@media(max-width:520px){
-  .hero{padding-top:105px}
-  .avatar-shell{width:142px;height:142px}
-  .card{min-height:128px;padding:20px}
-  .roblox-feature .copy{padding:27px 23px}
+@media(max-width:540px){
+  .wrap{width:min(var(--max),calc(100% - 24px))}
+  .topin{height:64px}
+  .mini{display:none}
+  .hero{padding-top:104px}
+  .avatar-shell{width:148px;height:148px}
+  h1{font-size:clamp(4rem,20vw,5.6rem)}
+  .card{min-height:132px;padding:19px}
+  .icon{width:52px;height:52px;flex-basis:52px}
+  .feature-copy{padding:28px 22px}
+  .section{padding-bottom:72px}
+}
+@media(hover:none){
+  #cursorGlow{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-  *{scroll-behavior:auto!important;transition:none!important}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 
 <body>
+<div class="blur-orb orb-a"></div>
+<div class="blur-orb orb-b"></div>
+<div id="cursorGlow"></div>
+
 <nav class="topbar" id="topbar">
   <div class="wrap topin">
-    <a class="logo" href="#top">
+    <a class="logo" href="#top" aria-label="Back to top">
       <span class="logo-mark">7Z</span>
       <span>TY7z</span>
     </a>
-    <span class="mini">SOCIALS</span>
+
+    <div class="top-actions">
+      <span class="mini">SOCIAL PROFILE</span>
+      <button class="share-btn" id="shareBtn" type="button" aria-label="Share this page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 16V4m0 0 4 4m-4-4-4 4"/>
+          <path d="M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -284,26 +396,40 @@ footer{
         <img id="avatarHead" alt="TY7z Roblox avatar">
         <span class="fallback" id="headFallback">7Z</span>
       </div>
-      <span class="online-dot"></span>
+      <span class="online-dot" title="Online presence"></span>
     </div>
 
     <div class="eyebrow reveal">Welcome to my page</div>
     <h1 class="reveal">TY7z</h1>
-    <p class="tag reveal">My socials, profiles and places to find me online.</p>
+    <p class="tag reveal">All my main socials and profiles in one place.</p>
 
     <div class="chips reveal">
       <span class="chip">@tyz_7z</span>
       <span class="chip">@tymon3765</span>
       <span class="chip">TymonTheLord</span>
+      <span class="chip">Ty7z_UK</span>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><strong>4</strong><span>Profiles</span></div>
+      <div class="stat"><strong>TY7z</strong><span>Handle</span></div>
+      <div class="stat"><strong>UK</strong><span>Based</span></div>
     </div>
   </div>
 </header>
 
-<main class="links">
+<main class="section">
   <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <h2>Find me online</h2>
+        <p>Tap any card to open the profile.</p>
+      </div>
+      <p>Clean links, no clutter.</p>
+    </div>
 
     <div class="grid">
-      <a class="card reveal" href="https://www.instagram.com/tyz_7z/" target="_blank" rel="noopener noreferrer">
+      <a class="card reveal spotlight" href="https://www.instagram.com/tyz_7z/" target="_blank" rel="noopener noreferrer">
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="3" y="3" width="18" height="18" rx="5"/>
@@ -314,14 +440,14 @@ footer{
         <span class="card-copy">
           <span class="label">Instagram</span>
           <span class="name">@tyz_7z</span>
-          <span class="hint">Open profile</span>
+          <span class="hint">Photos, posts & updates</span>
         </span>
         <span class="arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </span>
       </a>
 
-      <button class="card reveal" id="discordCard" type="button" style="color:inherit;text-align:left;font:inherit">
+      <button class="card reveal spotlight" id="discordCard" type="button">
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65">
             <path d="M8.3 7.2A9 9 0 0 1 12 6.4a9 9 0 0 1 3.7.8M7 17.2c2 1.5 8 1.5 10 0 1.2-2.2 1.7-4.5 1.5-6.8-1-.8-2-1.3-3.1-1.6l-.8 1.3a8.5 8.5 0 0 0-5.2 0l-.8-1.3c-1.1.3-2.1.8-3.1 1.6-.2 2.3.3 4.6 1.5 6.8Z"/>
@@ -339,7 +465,7 @@ footer{
         </span>
       </button>
 
-      <a class="card reveal" href="https://www.snapchat.com/add/Ty7z_UK" target="_blank" rel="noopener noreferrer">
+      <a class="card reveal spotlight" href="https://www.snapchat.com/add/Ty7z_UK" target="_blank" rel="noopener noreferrer">
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
             <path d="M12 3.3c-2.5 0-4.2 2-4.2 4.7 0 1.1.1 2-.3 2.5-.4.5-1 .5-1.5.8-.5.3-.4 1 .2 1.3.5.3 1.2.4 1.5.7.1.5-.2 1.2-.7 1.9.9.3 1.7.7 2.4 1.5.8.8 1.8 1.2 2.6 1.2s1.8-.4 2.6-1.2c.7-.8 1.5-1.2 2.4-1.5-.5-.7-.8-1.4-.7-1.9.3-.3 1-.4 1.5-.7.6-.3.7-1 .2-1.3-.5-.3-1.1-.3-1.5-.8-.4-.5-.3-1.4-.3-2.5 0-2.7-1.7-4.7-4.2-4.7Z"/>
@@ -355,7 +481,7 @@ footer{
         </span>
       </a>
 
-      <a class="card reveal" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener noreferrer">
+      <a class="card reveal spotlight" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener noreferrer">
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M6.4 2 2 17.6 17.6 22 22 6.4 6.4 2Zm7.9 13.1-5.4-1.5 1.5-5.4 5.4 1.5-1.5 5.4Z"/>
@@ -372,89 +498,145 @@ footer{
       </a>
     </div>
 
-    <a class="card roblox-feature reveal" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener noreferrer">
-      <div class="copy">
+    <section class="feature reveal" aria-label="Featured Roblox profile">
+      <div class="feature-copy">
         <span class="label">Featured profile</span>
         <h2>TymonTheLord</h2>
-        <p>My Roblox profile. The avatar shown here loads directly from my current Roblox avatar, so it can stay updated when I change my look.</p>
+        <p>Your Roblox avatar is loaded live from Roblox using your user ID, so your page can stay current when you change your avatar.</p>
+        <div class="feature-actions">
+          <a class="pill-btn" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener noreferrer">
+            Open Roblox
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+          <button class="pill-btn" id="copyRoblox" type="button">
+            Copy username
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="8" width="10" height="10" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="roblox-avatar-panel">
-        <img id="avatarFull" alt="TymonTheLord Roblox avatar">
-        <span class="roblox-fallback" id="fullFallback">Loading Roblox avatar…</span>
-      </div>
-    </a>
 
+      <div class="avatar-panel">
+        <img id="avatarFull" alt="TymonTheLord Roblox avatar">
+        <span class="avatar-fallback" id="fullFallback">Loading Roblox avatar…</span>
+      </div>
+    </section>
   </div>
 </main>
 
-<footer>
+<footer class="footer">
   <div class="wrap footerin">
     <span>TY7z</span>
     <span>Socials & profiles</span>
   </div>
 </footer>
 
-<div class="toast" id="toast">Discord username copied</div>
+<div class="toast" id="toast">Copied</div>
 
 <script>
 const ROBLOX_USER_ID = "1224318002";
-
 const topbar = document.getElementById("topbar");
+const toast = document.getElementById("toast");
+const cursorGlow = document.getElementById("cursorGlow");
+
+const setToast = (message) => {
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 1700);
+};
+
+const copyText = async (text, message) => {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const t = document.createElement("textarea");
+    t.value = text;
+    t.style.position = "fixed";
+    t.style.opacity = "0";
+    document.body.appendChild(t);
+    t.select();
+    document.execCommand("copy");
+    t.remove();
+  }
+  setToast(message);
+};
+
+document.getElementById("discordCard").addEventListener("click", () => {
+  copyText("tymon3765", "Discord username copied");
+});
+document.getElementById("copyRoblox").addEventListener("click", () => {
+  copyText("TymonTheLord", "Roblox username copied");
+});
+
+document.getElementById("shareBtn").addEventListener("click", async () => {
+  const data = {title:"TY7z", text:"TY7z socials", url:location.href};
+  if (navigator.share) {
+    try { await navigator.share(data); }
+    catch {}
+  } else {
+    copyText(location.href, "Page link copied");
+  }
+});
+
 const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 12);
 onScroll();
 window.addEventListener("scroll", onScroll, {passive:true});
 
-const els = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("visible");
-        io.unobserve(e.target);
-      }
-    });
-  }, {threshold:.1});
-  els.forEach(el => io.observe(el));
-} else {
-  els.forEach(el => el.classList.add("visible"));
+if (matchMedia("(hover:hover)").matches) {
+  window.addEventListener("pointermove", e => {
+    cursorGlow.style.left = e.clientX + "px";
+    cursorGlow.style.top = e.clientY + "px";
+    cursorGlow.style.opacity = "1";
+  }, {passive:true});
+  document.body.addEventListener("mouseleave", () => cursorGlow.style.opacity = "0");
 }
 
-const toast = document.getElementById("toast");
-document.getElementById("discordCard").addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText("tymon3765");
-  } catch {
-    const area = document.createElement("textarea");
-    area.value = "tymon3765";
-    document.body.appendChild(area);
-    area.select();
-    document.execCommand("copy");
-    area.remove();
-  }
-  toast.classList.add("show");
-  setTimeout(() => toast.classList.remove("show"), 1700);
+document.querySelectorAll(".spotlight").forEach(card => {
+  card.addEventListener("pointermove", e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    card.style.setProperty("--my", (e.clientY - r.top) + "px");
+  });
 });
 
-async function loadRobloxAvatar(type, imgEl, fallbackEl, size) {
-  try {
-    const url = `https://thumbnails.roblox.com/v1/users/${type}?userIds=${ROBLOX_USER_ID}&size=${size}&format=Png&isCircular=false`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Roblox thumbnail request failed");
-    const json = await res.json();
-    const imageUrl = json?.data?.[0]?.imageUrl;
-    if (!imageUrl) throw new Error("No image URL");
-    imgEl.src = imageUrl;
-    imgEl.onload = () => {
-      imgEl.style.display = "block";
-      fallbackEl.style.display = "none";
+const reveals = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.1,rootMargin:"0px 0px -28px 0px"});
+  reveals.forEach((el,i) => {
+    el.style.transitionDelay = Math.min(i*28,180) + "ms";
+    io.observe(el);
+  });
+} else {
+  reveals.forEach(el => el.classList.add("visible"));
+}
+
+async function loadRobloxAvatar(type,imgEl,fallbackEl,size){
+  try{
+    const url=`https://thumbnails.roblox.com/v1/users/${type}?userIds=${ROBLOX_USER_ID}&size=${size}&format=Png&isCircular=false`;
+    const res=await fetch(url);
+    if(!res.ok) throw new Error("thumbnail failed");
+    const json=await res.json();
+    const imageUrl=json?.data?.[0]?.imageUrl;
+    if(!imageUrl) throw new Error("missing image");
+    imgEl.src=imageUrl;
+    imgEl.onload=()=>{
+      imgEl.style.display="block";
+      fallbackEl.style.display="none";
     };
-  } catch (e) {
-    fallbackEl.textContent = type === "avatar" ? "TymonTheLord" : "7Z";
+  }catch(e){
+    fallbackEl.textContent=type==="avatar"?"TymonTheLord":"7Z";
   }
 }
 
-loadRobloxAvatar("avatar-headshot", document.getElementById("avatarHead"), document.getElementById("headFallback"), "420x420");
-loadRobloxAvatar("avatar", document.getElementById("avatarFull"), document.getElementById("fullFallback"), "420x420");
+loadRobloxAvatar("avatar-headshot",document.getElementById("avatarHead"),document.getElementById("headFallback"),"420x420");
+loadRobloxAvatar("avatar",document.getElementById("avatarFull"),document.getElementById("fullFallback"),"420x420");
 </script>
 </body>
 </html>
