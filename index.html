@@ -3,640 +3,309 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#05070b">
-<meta name="description" content="TY7z — socials, profiles and links.">
-<title>TY7z | Socials</title>
-
+<meta name="theme-color" content="#06080c">
+<meta name="description" content="TY7z — socials and profiles.">
+<title>TY7z | Social Hub</title>
 <style>
 :root{
-  --bg:#05070b;
-  --bg2:#090d13;
-  --panel:rgba(255,255,255,.045);
-  --panel2:rgba(255,255,255,.022);
-  --panel3:rgba(255,255,255,.07);
-  --line:rgba(255,255,255,.085);
-  --line-strong:rgba(255,255,255,.15);
-  --text:#f7f9fc;
-  --muted:#9aa5b5;
-  --muted2:#6f7c8f;
-  --accent:#8edcff;
-  --accent2:#b69cff;
-  --accent3:#d7f3ff;
-  --good:#8ff6b2;
-  --shadow:0 30px 95px rgba(0,0,0,.48);
-  --shadow-soft:0 12px 38px rgba(0,0,0,.24);
-  --radius:26px;
-  --radius-sm:17px;
-  --max:1080px;
+  --bg:#05070a; --bg2:#090d13; --panel:#0b1118cc; --panel2:#101721d9;
+  --stroke:rgba(255,255,255,.09); --stroke2:rgba(255,255,255,.16);
+  --text:#f7f9fc; --muted:#9ca8b9; --muted2:#6e7b8e;
+  --ice:#bde6ff; --violet:#c1b0ff; --green:#78f0a2;
+  --shadow:0 30px 100px rgba(0,0,0,.52);
+  --max:1120px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 12% 8%,rgba(142,220,255,.10),transparent 28rem),
-    radial-gradient(circle at 88% 12%,rgba(182,156,255,.09),transparent 32rem),
-    radial-gradient(circle at 50% 100%,rgba(142,220,255,.045),transparent 34rem),
-    linear-gradient(180deg,#05070b 0%,#090c12 50%,#05070b 100%);
-  color:var(--text);
+  margin:0; min-height:100vh; color:var(--text);
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.55;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(189,230,255,.10),transparent 30rem),
+    radial-gradient(circle at 100% 12%,rgba(193,176,255,.07),transparent 34rem),
+    linear-gradient(180deg,#05070a 0,#080b10 45%,#05070a 100%);
   overflow-x:hidden;
 }
 body::before{
-  content:"";
-  position:fixed;inset:0;z-index:-3;pointer-events:none;
+  content:""; position:fixed; inset:0; z-index:-4; pointer-events:none;
   background-image:
-    linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);
-  background-size:48px 48px;
-  mask-image:linear-gradient(to bottom,black 0%,rgba(0,0,0,.9) 35%,transparent 82%);
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.8) 55%,transparent 95%);
 }
 body::after{
-  content:"";
-  position:fixed;inset:0;z-index:-4;pointer-events:none;
+  content:""; position:fixed; inset:0; z-index:-3; pointer-events:none;
   background:
-    radial-gradient(circle at 20% 40%,rgba(142,220,255,.035),transparent 25rem),
-    radial-gradient(circle at 82% 64%,rgba(182,156,255,.035),transparent 28rem);
+    linear-gradient(110deg,transparent 0 46%,rgba(255,255,255,.018) 48%,transparent 50%),
+    radial-gradient(circle at 20% 70%,rgba(189,230,255,.03),transparent 22rem);
 }
-a{color:inherit}
-button{font:inherit}
-::selection{background:rgba(142,220,255,.26);color:#fff}
-.wrap{width:min(var(--max),calc(100% - 34px));margin-inline:auto}
-.blur-orb{
-  position:fixed;border-radius:50%;filter:blur(18px);pointer-events:none;z-index:-2;
-  opacity:.5
+a{color:inherit} button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+#glow{
+  position:fixed;width:360px;height:360px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;
+  background:radial-gradient(circle,rgba(189,230,255,.07),transparent 68%);
+  transform:translate(-50%,-50%);transition:opacity .2s ease
 }
-.orb-a{width:380px;height:380px;left:-170px;top:20%;background:radial-gradient(circle,rgba(142,220,255,.10),transparent 68%)}
-.orb-b{width:460px;height:460px;right:-220px;top:33%;background:radial-gradient(circle,rgba(182,156,255,.10),transparent 68%)}
-
-#cursorGlow{
-  position:fixed;width:320px;height:320px;border-radius:50%;
-  background:radial-gradient(circle,rgba(142,220,255,.055),transparent 66%);
-  transform:translate(-50%,-50%);
-  pointer-events:none;z-index:-1;opacity:0;transition:opacity .25s ease;
-}
-
-.topbar{
-  position:fixed;left:0;right:0;top:0;z-index:30;
-  background:rgba(5,7,11,.45);
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
   backdrop-filter:blur(22px) saturate(130%);
-  border-bottom:1px solid transparent;
-  transition:.25s ease;
+  background:rgba(5,7,10,.58);border-bottom:1px solid transparent;transition:.25s ease
 }
-.topbar.scrolled{
-  background:rgba(5,7,11,.78);
-  border-color:var(--line);
+.nav.scrolled{background:rgba(5,7,10,.88);border-color:var(--stroke)}
+.navin{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:900;letter-spacing:.08em}
+.brandmark{
+  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:950;
+  background:linear-gradient(145deg,#1a2230,#0d1219);border:1px solid var(--stroke2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 8px 26px rgba(0,0,0,.3),0 0 24px rgba(189,230,255,.06)
 }
-.topin{
-  height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px
+.navlinks{display:flex;gap:8px}
+.navlinks a{
+  text-decoration:none;color:#9aa6b7;font-size:.78rem;font-weight:800;padding:8px 11px;border-radius:10px
 }
-.logo{
-  display:flex;align-items:center;gap:11px;text-decoration:none;
-  font-weight:900;letter-spacing:.1em;font-size:.86rem
+.navlinks a:hover{color:white;background:rgba(255,255,255,.04)}
+.copy{
+  border:1px solid var(--stroke);background:rgba(255,255,255,.03);color:#dce4ed;
+  border-radius:12px;padding:9px 12px;font-weight:800;cursor:pointer
 }
-.logo-mark{
-  width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
-  background:linear-gradient(145deg,rgba(142,220,255,.20),rgba(182,156,255,.16));
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 26px rgba(0,0,0,.22)
-}
-.top-actions{display:flex;align-items:center;gap:9px}
-.mini{
-  color:#aab5c5;font-size:.75rem;font-weight:800;letter-spacing:.12em;
-  padding:8px 11px;border:1px solid var(--line);border-radius:999px;
-  background:rgba(255,255,255,.025)
-}
-.share-btn{
-  width:36px;height:36px;border-radius:12px;border:1px solid var(--line);
-  background:rgba(255,255,255,.025);color:#a8b5c6;cursor:pointer;
-  display:grid;place-items:center;transition:.2s ease
-}
-.share-btn:hover{border-color:var(--line-strong);color:#fff;background:rgba(255,255,255,.05)}
-.share-btn svg{width:17px;height:17px}
-
-.hero{
-  padding:122px 0 40px;
-  text-align:center;
-}
-.avatar-shell{
-  position:relative;
-  width:176px;height:176px;margin:0 auto 25px;
-}
-.avatar-ring{
-  position:absolute;inset:-4px;border-radius:50%;
-  background:conic-gradient(from 180deg,var(--accent),rgba(255,255,255,.22),var(--accent2),var(--accent));
-  animation:ringSpin 12s linear infinite;
-  box-shadow:0 0 55px rgba(142,220,255,.08),0 0 95px rgba(182,156,255,.06)
-}
-.avatar-ring::after{
-  content:"";position:absolute;inset:2px;border-radius:50%;background:#080b10
-}
-.avatar{
-  position:absolute;inset:8px;border-radius:50%;overflow:hidden;z-index:2;
+.hero{padding:118px 0 36px;text-align:center}
+.stage{
+  position:relative;min-height:460px;border:1px solid var(--stroke);border-radius:34px;overflow:hidden;
   background:
-    radial-gradient(circle at 30% 20%,rgba(142,220,255,.16),transparent 36%),
-    linear-gradient(145deg,#101722,#0a0f16);
-  border:1px solid rgba(255,255,255,.08);
-  display:grid;place-items:center;
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008)),
+    radial-gradient(circle at 50% 15%,rgba(189,230,255,.08),transparent 24rem);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),var(--shadow);
 }
-.avatar::after{
-  content:"";position:absolute;inset:0;
-  box-shadow:inset 0 0 50px rgba(0,0,0,.22);pointer-events:none
+.stage::before,.stage::after{
+  content:"";position:absolute;inset:auto;pointer-events:none
 }
-.avatar img{width:100%;height:100%;object-fit:cover;display:none}
-.fallback{
-  font-size:2.15rem;font-weight:950;letter-spacing:-.08em;color:#dff4ff
+.stage::before{
+  width:75%;height:1px;left:12.5%;top:53%;
+  background:linear-gradient(90deg,transparent,rgba(189,230,255,.17),transparent)
 }
-.online-dot{
-  position:absolute;right:9px;bottom:14px;z-index:4;
-  width:21px;height:21px;border-radius:50%;
-  background:var(--good);border:4px solid #090d13;
-  box-shadow:0 0 0 5px rgba(143,246,178,.05),0 0 20px rgba(143,246,178,.35)
+.stage::after{
+  width:310px;height:310px;border-radius:50%;left:50%;top:38px;transform:translateX(-50%);
+  border:1px solid rgba(255,255,255,.05);box-shadow:0 0 90px rgba(189,230,255,.05)
 }
-.eyebrow{
-  color:#a9b4c4;font-size:.74rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase
+.wall-detail{
+  position:absolute;inset:0;background:
+  linear-gradient(90deg,transparent 8%,rgba(255,255,255,.025) 8.1%,transparent 8.2% 91.8%,rgba(255,255,255,.025) 91.9%,transparent 92%);
+  pointer-events:none
 }
+.avatarHero{
+  width:164px;height:164px;border-radius:50%;margin:38px auto 13px;position:relative;z-index:2;
+  background:linear-gradient(145deg,#141c26,#090d12);border:1px solid rgba(255,255,255,.18);
+  padding:7px;box-shadow:0 0 0 6px rgba(255,255,255,.018),0 0 70px rgba(189,230,255,.10),0 28px 60px rgba(0,0,0,.35)
+}
+.avatarHero img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;background:#0a0f15}
+.status{
+  position:absolute;right:5px;bottom:11px;width:22px;height:22px;border-radius:50%;background:var(--green);
+  border:4px solid #0a0e13;box-shadow:0 0 22px rgba(120,240,162,.5)
+}
+.kicker{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#7d8a9d;font-weight:900}
 h1{
-  margin:8px 0 0;
-  font-size:clamp(4.1rem,11vw,7.1rem);
-  line-height:.88;letter-spacing:-.075em;font-weight:900;
-  color:transparent;
-  background:linear-gradient(100deg,#fff 10%,#dfe9f3 46%,#9ed8ff 78%,#c6b0ff);
-  -webkit-background-clip:text;background-clip:text;
-  text-shadow:0 0 80px rgba(142,220,255,.07)
+  font-size:clamp(4.5rem,10vw,7.5rem);line-height:.83;margin:8px 0 0;font-weight:950;letter-spacing:-.075em;
+  color:transparent;background:linear-gradient(180deg,#fff,#d7e2ed 52%,#8a97a8);-webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.28))
 }
-.tag{
-  margin:17px auto 0;max-width:620px;
-  color:#a6b1c0;font-size:1.02rem
-}
-.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px}
-.chip{
-  position:relative;overflow:hidden;
-  padding:7px 11px;border-radius:999px;border:1px solid var(--line);
-  color:#aeb8c7;background:rgba(255,255,255,.024);
-  font-size:.75rem;font-weight:700
-}
-.chip::before{
-  content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);
-  transform:translateX(-100%)
-}
-.chip:hover::before{animation:shine .8s ease}
-
-.stats{
-  margin:28px auto 0;
-  display:inline-grid;grid-template-columns:repeat(3,1fr);
-  border:1px solid var(--line);border-radius:18px;
-  background:rgba(255,255,255,.025);
-  overflow:hidden;box-shadow:var(--shadow-soft)
-}
-.stat{padding:14px 18px;min-width:120px}
-.stat+.stat{border-left:1px solid var(--line)}
-.stat strong{display:block;font-size:.9rem}
-.stat span{display:block;margin-top:2px;color:var(--muted2);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
-
-.section{
-  padding:30px 0 90px;
-}
-.section-head{
-  display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:18px
-}
-.section-head h2{margin:0;font-size:1.05rem;letter-spacing:-.015em}
-.section-head p{margin:0;color:var(--muted2);font-size:.8rem}
+.sub{color:#9da9ba;margin:16px auto 0;max-width:620px}
+.tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+.tag{border:1px solid var(--stroke);background:rgba(255,255,255,.025);border-radius:999px;padding:7px 11px;color:#aab4c3;font-size:.75rem;font-weight:800}
+.content{padding:16px 0 86px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:18px 0 14px;gap:20px}
+.sectionhead h2{font-size:1rem;margin:0}.sectionhead p{margin:0;color:#677487;font-size:.78rem}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-
 .card{
-  position:relative;overflow:hidden;
-  min-height:152px;padding:24px;
-  display:flex;align-items:center;gap:18px;
-  border:1px solid var(--line);border-radius:var(--radius);
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
-  box-shadow:0 14px 42px rgba(0,0,0,.15);
-  text-decoration:none;color:inherit;
-  transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
-  isolation:isolate;
+  --rx:0deg;--ry:0deg;
+  position:relative;min-height:150px;border-radius:26px;padding:24px;overflow:hidden;isolation:isolate;
+  display:flex;align-items:center;gap:18px;text-decoration:none;color:inherit;
+  border:1px solid var(--stroke);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 16px 45px rgba(0,0,0,.18);
+  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateZ(0);
+  transition:transform .15s ease,border-color .2s ease,box-shadow .2s ease
 }
 .card::before{
-  content:"";position:absolute;inset:0;z-index:-1;opacity:0;
-  background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(142,220,255,.085),transparent 42%);
-  transition:opacity .22s ease
+  content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:.2s;
+  background:radial-gradient(330px circle at var(--mx,50%) var(--my,50%),rgba(189,230,255,.12),transparent 42%)
 }
 .card::after{
-  content:"";position:absolute;right:-60px;bottom:-95px;width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,rgba(182,156,255,.07),transparent 66%);z-index:-1
+  content:"";position:absolute;left:13px;right:13px;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)
 }
-.card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(142,220,255,.22);
-  background:rgba(255,255,255,.052);
-  box-shadow:0 24px 58px rgba(0,0,0,.26)
-}
+.card:hover{border-color:rgba(189,230,255,.22);box-shadow:0 28px 62px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.07)}
 .card:hover::before{opacity:1}
-button.card{width:100%;color:inherit;text-align:left;font:inherit;cursor:pointer}
-
-.icon{
-  flex:0 0 56px;width:56px;height:56px;border-radius:17px;
-  display:grid;place-items:center;
-  border:1px solid rgba(255,255,255,.09);
-  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.028));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
-  transition:.2s ease
+button.card{width:100%;text-align:left;cursor:pointer}
+.ico{
+  flex:0 0 58px;width:58px;height:58px;border-radius:18px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#171f2a,#0c1118);border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 24px rgba(0,0,0,.26)
 }
-.card:hover .icon{transform:translateY(-1px) scale(1.02);border-color:rgba(255,255,255,.14)}
-.icon svg{width:26px;height:26px}
-.card-copy{min-width:0;flex:1}
-.label{
-  display:block;color:#748197;font-size:.68rem;font-weight:900;
-  text-transform:uppercase;letter-spacing:.14em;margin-bottom:5px
-}
-.name{
-  display:block;font-size:1.12rem;font-weight:850;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
-}
-.hint{display:block;color:#8e9aab;font-size:.78rem;margin-top:4px}
-.arrow{
-  width:36px;height:36px;border-radius:12px;
-  display:grid;place-items:center;color:#97a4b7;
-  border:1px solid var(--line);background:rgba(255,255,255,.025);
-  transition:.2s ease
-}
-.card:hover .arrow{transform:translateX(2px);color:#fff;border-color:var(--line-strong)}
-.arrow svg{width:16px;height:16px}
-
+.ico svg{width:27px;height:27px}.copyText{flex:1;min-width:0}
+.label{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:#748197;font-weight:900}
+.name{font-size:1.13rem;font-weight:900;margin-top:4px}.hint{font-size:.78rem;color:#8d99aa;margin-top:4px}
+.arrow{width:37px;height:37px;border:1px solid var(--stroke);border-radius:12px;display:grid;place-items:center;color:#9aa7b9;background:rgba(255,255,255,.025)}
+.arrow svg{width:16px}
 .feature{
-  margin-top:14px;
-  display:grid;grid-template-columns:1.1fr .9fr;
-  min-height:250px;
-  border:1px solid var(--line);border-radius:30px;overflow:hidden;
+  margin-top:14px;border:1px solid var(--stroke);border-radius:30px;overflow:hidden;
+  display:grid;grid-template-columns:1.05fr .95fr;min-height:330px;
+  background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 18px 55px rgba(0,0,0,.2)
+}
+.featureCopy{padding:38px;display:flex;flex-direction:column;justify-content:center}
+.featureCopy h2{font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-.05em;line-height:.95;margin:6px 0 12px}
+.featureCopy p{color:#99a6b7;max-width:540px;margin:0}
+.stats{display:flex;gap:24px;margin-top:22px;flex-wrap:wrap}
+.stat strong{display:block;font-size:1.05rem}.stat span{display:block;color:#6f7c8f;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+.btn{padding:10px 13px;border-radius:12px;border:1px solid var(--stroke);background:rgba(255,255,255,.03);color:#e4eaf1;text-decoration:none;font-weight:850;font-size:.8rem;cursor:pointer}
+.visual{
+  position:relative;display:grid;place-items:center;border-left:1px solid var(--stroke);min-height:330px;
   background:
-    linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
-  box-shadow:var(--shadow-soft)
+    radial-gradient(circle at 50% 55%,rgba(189,230,255,.10),transparent 36%),
+    linear-gradient(145deg,rgba(255,255,255,.015),rgba(255,255,255,.04))
 }
-.feature-copy{padding:36px;display:flex;flex-direction:column;justify-content:center}
-.feature h2{
-  margin:4px 0 11px;
-  font-size:clamp(1.8rem,4vw,2.7rem);
-  line-height:1;letter-spacing:-.045em
+.visual::before{
+  content:"";position:absolute;inset:18px;border-radius:24px;border:1px solid rgba(255,255,255,.05);
+  box-shadow:inset 0 0 50px rgba(255,255,255,.01)
 }
-.feature p{margin:0;color:#9ca8b8;max-width:510px}
-.feature-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.pill-btn{
-  display:inline-flex;align-items:center;gap:9px;
-  min-height:40px;padding:0 13px;border-radius:12px;
-  border:1px solid var(--line);background:rgba(255,255,255,.03);
-  color:#dbe4ef;text-decoration:none;font-size:.8rem;font-weight:800;
-  transition:.2s ease
+.fullAvatar{max-height:300px;max-width:94%;object-fit:contain;filter:drop-shadow(0 32px 34px rgba(0,0,0,.45));z-index:1}
+.minigrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.miniCard{
+  border:1px solid var(--stroke);border-radius:20px;padding:18px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+  min-height:112px;box-shadow:inset 0 1px 0 rgba(255,255,255,.03)
 }
-.pill-btn:hover{transform:translateY(-2px);border-color:var(--line-strong);background:rgba(255,255,255,.055)}
-.pill-btn svg{width:15px;height:15px}
-.avatar-panel{
-  position:relative;display:grid;place-items:center;min-height:250px;
-  border-left:1px solid var(--line);
-  background:
-    radial-gradient(circle at 50% 58%,rgba(142,220,255,.12),transparent 38%),
-    radial-gradient(circle at 78% 18%,rgba(182,156,255,.08),transparent 24%),
-    linear-gradient(145deg,rgba(255,255,255,.01),rgba(255,255,255,.035));
-}
-.avatar-panel::before{
-  content:"";position:absolute;inset:16px;border-radius:24px;border:1px solid rgba(255,255,255,.05);pointer-events:none
-}
-.avatar-panel img{
-  max-height:232px;max-width:92%;object-fit:contain;display:none;
-  filter:drop-shadow(0 25px 28px rgba(0,0,0,.35));
-  animation:floaty 5s ease-in-out infinite
-}
-.avatar-fallback{color:#738196;font-size:.92rem}
-
-.footer{
-  border-top:1px solid var(--line);
-  padding:24px 0 34px;color:#687487;font-size:.76rem
-}
-.footerin{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.footer a{text-decoration:none;color:#8e9aab}
-
-.toast{
-  position:fixed;left:50%;bottom:24px;z-index:50;
-  transform:translate(-50%,20px);opacity:0;pointer-events:none;
-  padding:11px 15px;border-radius:13px;
-  background:rgba(15,20,29,.96);border:1px solid var(--line-strong);
-  color:#eef4fb;font-size:.84rem;font-weight:800;
-  box-shadow:var(--shadow);backdrop-filter:blur(16px);
-  transition:.25s ease
-}
+.miniCard strong{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}.miniCard p{font-size:.76rem;color:#7f8c9d;margin:7px 0 0}
+.footer{border-top:1px solid var(--stroke);padding:24px 0 34px;color:#657184;font-size:.75rem}
+.footerin{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:24px;z-index:60;transform:translate(-50%,16px);opacity:0;background:#111821;border:1px solid var(--stroke2);padding:11px 15px;border-radius:12px;font-weight:850;font-size:.8rem;box-shadow:var(--shadow);transition:.25s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .62s ease,transform .62s ease}
-.reveal.visible{opacity:1;transform:none}
-
-@keyframes ringSpin{to{transform:rotate(360deg)}}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes shine{to{transform:translateX(100%)}}
-
-@media(max-width:780px){
-  .grid{grid-template-columns:1fr}
-  .feature{grid-template-columns:1fr}
-  .avatar-panel{border-left:0;border-top:1px solid var(--line)}
-  .stats{grid-template-columns:1fr;display:grid}
-  .stat+.stat{border-left:0;border-top:1px solid var(--line)}
+.reveal{opacity:0;transform:translateY(14px);transition:.55s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:800px){
+  .navlinks{display:none}.grid{grid-template-columns:1fr}.feature{grid-template-columns:1fr}.visual{border-left:0;border-top:1px solid var(--stroke)}
+  .minigrid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:540px){
-  .wrap{width:min(var(--max),calc(100% - 24px))}
-  .topin{height:64px}
-  .mini{display:none}
-  .hero{padding-top:104px}
-  .avatar-shell{width:148px;height:148px}
-  h1{font-size:clamp(4rem,20vw,5.6rem)}
-  .card{min-height:132px;padding:19px}
-  .icon{width:52px;height:52px;flex-basis:52px}
-  .feature-copy{padding:28px 22px}
-  .section{padding-bottom:72px}
+@media(max-width:520px){
+  .wrap{width:min(var(--max),calc(100% - 22px))}.copy{display:none}.hero{padding-top:98px}.stage{min-height:420px}
+  .avatarHero{width:144px;height:144px}.card{min-height:132px;padding:19px}.ico{width:52px;height:52px;flex-basis:52px}
+  .featureCopy{padding:28px 22px}.minigrid{grid-template-columns:1fr}
 }
-@media(hover:none){
-  #cursorGlow{display:none}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
-}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
-
 <body>
-<div class="blur-orb orb-a"></div>
-<div class="blur-orb orb-b"></div>
-<div id="cursorGlow"></div>
-
-<nav class="topbar" id="topbar">
-  <div class="wrap topin">
-    <a class="logo" href="#top" aria-label="Back to top">
-      <span class="logo-mark">7Z</span>
-      <span>TY7z</span>
-    </a>
-
-    <div class="top-actions">
-      <span class="mini">SOCIAL PROFILE</span>
-      <button class="share-btn" id="shareBtn" type="button" aria-label="Share this page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-          <path d="M12 16V4m0 0 4 4m-4-4-4 4"/>
-          <path d="M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"/>
-        </svg>
-      </button>
-    </div>
+<div id="glow"></div>
+<nav class="nav" id="nav">
+  <div class="wrap navin">
+    <a class="brand" href="#top"><span class="brandmark">7Z</span><span>TY7z</span></a>
+    <div class="navlinks"><a href="#socials">Socials</a><a href="#featured">Featured</a><a href="#about">Details</a></div>
+    <button class="copy" id="shareBtn">Copy link</button>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="avatar-shell reveal" aria-label="TY7z Roblox avatar">
-      <div class="avatar-ring"></div>
-      <div class="avatar">
-        <img id="avatarHead" alt="TY7z Roblox avatar">
-        <span class="fallback" id="headFallback">7Z</span>
+    <section class="stage reveal">
+      <div class="wall-detail"></div>
+      <div class="avatarHero">
+        <img src="https://www.roblox.com/headshot-thumbnail/image?userId=1224318002&width=420&height=420&format=png" alt="TymonTheLord Roblox avatar">
+        <span class="status"></span>
       </div>
-      <span class="online-dot" title="Online presence"></span>
-    </div>
-
-    <div class="eyebrow reveal">Welcome to my page</div>
-    <h1 class="reveal">TY7z</h1>
-    <p class="tag reveal">All my main socials and profiles in one place.</p>
-
-    <div class="chips reveal">
-      <span class="chip">@tyz_7z</span>
-      <span class="chip">@tymon3765</span>
-      <span class="chip">TymonTheLord</span>
-      <span class="chip">Ty7z_UK</span>
-    </div>
-
-    <div class="stats reveal">
-      <div class="stat"><strong>4</strong><span>Profiles</span></div>
-      <div class="stat"><strong>TY7z</strong><span>Handle</span></div>
-      <div class="stat"><strong>UK</strong><span>Based</span></div>
-    </div>
+      <div class="kicker">Social profile</div>
+      <h1>TY7z</h1>
+      <p class="sub">My socials, profiles and places to find me online.</p>
+      <div class="tags">
+        <span class="tag">@tyz_7z</span><span class="tag">@tymon3765</span><span class="tag">TymonTheLord</span><span class="tag">Ty7z_UK</span>
+      </div>
+    </section>
   </div>
 </header>
 
-<main class="section">
+<main class="content">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <h2>Find me online</h2>
-        <p>Tap any card to open the profile.</p>
-      </div>
-      <p>Clean links, no clutter.</p>
-    </div>
+    <div class="sectionhead reveal" id="socials"><div><h2>Find me online</h2><p>Direct links and usernames.</p></div><p>Hover the cards.</p></div>
 
     <div class="grid">
-      <a class="card reveal spotlight" href="https://www.instagram.com/tyz_7z/" target="_blank" rel="noopener noreferrer">
-        <span class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <rect x="3" y="3" width="18" height="18" rx="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-        </span>
-        <span class="card-copy">
-          <span class="label">Instagram</span>
-          <span class="name">@tyz_7z</span>
-          <span class="hint">Photos, posts & updates</span>
-        </span>
-        <span class="arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg>
-        </span>
+      <a class="card tilt reveal" href="https://www.instagram.com/tyz_7z/" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        <span class="copyText"><span class="label">Instagram</span><span class="name">@tyz_7z</span><span class="hint">Open my Instagram profile</span></span>
+        <span class="arrow">↗</span>
       </a>
-
-      <button class="card reveal spotlight" id="discordCard" type="button">
-        <span class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65">
-            <path d="M8.3 7.2A9 9 0 0 1 12 6.4a9 9 0 0 1 3.7.8M7 17.2c2 1.5 8 1.5 10 0 1.2-2.2 1.7-4.5 1.5-6.8-1-.8-2-1.3-3.1-1.6l-.8 1.3a8.5 8.5 0 0 0-5.2 0l-.8-1.3c-1.1.3-2.1.8-3.1 1.6-.2 2.3.3 4.6 1.5 6.8Z"/>
-            <circle cx="9.5" cy="13" r="1"/>
-            <circle cx="14.5" cy="13" r="1"/>
-          </svg>
-        </span>
-        <span class="card-copy">
-          <span class="label">Discord</span>
-          <span class="name">@tymon3765</span>
-          <span class="hint">Click to copy username</span>
-        </span>
-        <span class="arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="8" width="10" height="10" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg>
-        </span>
+      <button class="card tilt reveal" id="discord">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8.3 7.2A9 9 0 0 1 12 6.4a9 9 0 0 1 3.7.8M7 17.2c2 1.5 8 1.5 10 0 1.2-2.2 1.7-4.5 1.5-6.8-1-.8-2-1.3-3.1-1.6l-.8 1.3a8.5 8.5 0 0 0-5.2 0l-.8-1.3c-1.1.3-2.1.8-3.1 1.6-.2 2.3.3 4.6 1.5 6.8Z"/><circle cx="9.5" cy="13" r="1"/><circle cx="14.5" cy="13" r="1"/></svg></span>
+        <span class="copyText"><span class="label">Discord</span><span class="name">@tymon3765</span><span class="hint">Click to copy username</span></span>
+        <span class="arrow">⧉</span>
       </button>
-
-      <a class="card reveal spotlight" href="https://www.snapchat.com/add/Ty7z_UK" target="_blank" rel="noopener noreferrer">
-        <span class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <path d="M12 3.3c-2.5 0-4.2 2-4.2 4.7 0 1.1.1 2-.3 2.5-.4.5-1 .5-1.5.8-.5.3-.4 1 .2 1.3.5.3 1.2.4 1.5.7.1.5-.2 1.2-.7 1.9.9.3 1.7.7 2.4 1.5.8.8 1.8 1.2 2.6 1.2s1.8-.4 2.6-1.2c.7-.8 1.5-1.2 2.4-1.5-.5-.7-.8-1.4-.7-1.9.3-.3 1-.4 1.5-.7.6-.3.7-1 .2-1.3-.5-.3-1.1-.3-1.5-.8-.4-.5-.3-1.4-.3-2.5 0-2.7-1.7-4.7-4.2-4.7Z"/>
-          </svg>
-        </span>
-        <span class="card-copy">
-          <span class="label">Snapchat</span>
-          <span class="name">Ty7z_UK</span>
-          <span class="hint">Add me on Snapchat</span>
-        </span>
-        <span class="arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg>
-        </span>
+      <a class="card tilt reveal" href="https://www.snapchat.com/add/Ty7z_UK" target="_blank" rel="noopener">
+        <span class="ico">👻</span><span class="copyText"><span class="label">Snapchat</span><span class="name">Ty7z_UK</span><span class="hint">Add me on Snapchat</span></span><span class="arrow">↗</span>
       </a>
-
-      <a class="card reveal spotlight" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener noreferrer">
-        <span class="icon">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6.4 2 2 17.6 17.6 22 22 6.4 6.4 2Zm7.9 13.1-5.4-1.5 1.5-5.4 5.4 1.5-1.5 5.4Z"/>
-          </svg>
-        </span>
-        <span class="card-copy">
-          <span class="label">Roblox</span>
-          <span class="name">TymonTheLord</span>
-          <span class="hint">View my Roblox profile</span>
-        </span>
-        <span class="arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg>
-        </span>
+      <a class="card tilt reveal" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.4 2 2 17.6 17.6 22 22 6.4 6.4 2Zm7.9 13.1-5.4-1.5 1.5-5.4 5.4 1.5-1.5 5.4Z"/></svg></span>
+        <span class="copyText"><span class="label">Roblox</span><span class="name">TymonTheLord</span><span class="hint">View my Roblox profile</span></span><span class="arrow">↗</span>
       </a>
     </div>
 
-    <section class="feature reveal" aria-label="Featured Roblox profile">
-      <div class="feature-copy">
+    <section class="feature reveal" id="featured">
+      <div class="featureCopy">
         <span class="label">Featured profile</span>
         <h2>TymonTheLord</h2>
-        <p>Your Roblox avatar is loaded live from Roblox using your user ID, so your page can stay current when you change your avatar.</p>
-        <div class="feature-actions">
-          <a class="pill-btn" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener noreferrer">
-            Open Roblox
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg>
-          </a>
-          <button class="pill-btn" id="copyRoblox" type="button">
-            Copy username
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="8" width="10" height="10" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg>
-          </button>
+        <p>My Roblox profile and current avatar. The image is loaded directly as an image rather than through a browser API fetch, which is more reliable on GitHub Pages.</p>
+        <div class="stats">
+          <div class="stat"><strong>1224318002</strong><span>User ID</span></div>
+          <div class="stat"><strong>TY7z</strong><span>Identity</span></div>
+          <div class="stat"><strong>4</strong><span>Main socials</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://www.roblox.com/users/1224318002/profile" target="_blank" rel="noopener">View on Roblox ↗</a>
+          <button class="btn" id="copyRoblox">Copy username</button>
         </div>
       </div>
-
-      <div class="avatar-panel">
-        <img id="avatarFull" alt="TymonTheLord Roblox avatar">
-        <span class="avatar-fallback" id="fullFallback">Loading Roblox avatar…</span>
+      <div class="visual">
+        <img class="fullAvatar" src="https://www.roblox.com/avatar-thumbnail/image?userId=1224318002&width=420&height=420&format=png" alt="TymonTheLord full Roblox avatar">
       </div>
+    </section>
+
+    <section class="minigrid reveal" id="about">
+      <div class="miniCard"><strong>Identity</strong><p>TY7z — one clean hub for everything.</p></div>
+      <div class="miniCard"><strong>Profiles</strong><p>Instagram, Discord, Snapchat and Roblox.</p></div>
+      <div class="miniCard"><strong>Design</strong><p>Dark glass, 3D depth, lighting and smooth interaction.</p></div>
+      <div class="miniCard"><strong>Built for</strong><p>Desktop, mobile and GitHub Pages.</p></div>
     </section>
   </div>
 </main>
 
-<footer class="footer">
-  <div class="wrap footerin">
-    <span>TY7z</span>
-    <span>Socials & profiles</span>
-  </div>
-</footer>
-
+<footer class="footer"><div class="wrap footerin"><span>TY7z</span><span>Social hub • 2026</span></div></footer>
 <div class="toast" id="toast">Copied</div>
 
 <script>
-const ROBLOX_USER_ID = "1224318002";
-const topbar = document.getElementById("topbar");
-const toast = document.getElementById("toast");
-const cursorGlow = document.getElementById("cursorGlow");
+const toast=document.getElementById('toast');
+function showToast(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>toast.classList.remove('show'),1600)}
+async function copy(t,msg){try{await navigator.clipboard.writeText(t)}catch{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}showToast(msg)}
+document.getElementById('discord').onclick=()=>copy('tymon3765','Discord username copied');
+document.getElementById('copyRoblox').onclick=()=>copy('TymonTheLord','Roblox username copied');
+document.getElementById('shareBtn').onclick=()=>copy(location.href,'Page link copied');
 
-const setToast = (message) => {
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 1700);
-};
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
 
-const copyText = async (text, message) => {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    const t = document.createElement("textarea");
-    t.value = text;
-    t.style.position = "fixed";
-    t.style.opacity = "0";
-    document.body.appendChild(t);
-    t.select();
-    document.execCommand("copy");
-    t.remove();
-  }
-  setToast(message);
-};
-
-document.getElementById("discordCard").addEventListener("click", () => {
-  copyText("tymon3765", "Discord username copied");
-});
-document.getElementById("copyRoblox").addEventListener("click", () => {
-  copyText("TymonTheLord", "Roblox username copied");
-});
-
-document.getElementById("shareBtn").addEventListener("click", async () => {
-  const data = {title:"TY7z", text:"TY7z socials", url:location.href};
-  if (navigator.share) {
-    try { await navigator.share(data); }
-    catch {}
-  } else {
-    copyText(location.href, "Page link copied");
-  }
-});
-
-const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 12);
-onScroll();
-window.addEventListener("scroll", onScroll, {passive:true});
-
-if (matchMedia("(hover:hover)").matches) {
-  window.addEventListener("pointermove", e => {
-    cursorGlow.style.left = e.clientX + "px";
-    cursorGlow.style.top = e.clientY + "px";
-    cursorGlow.style.opacity = "1";
-  }, {passive:true});
-  document.body.addEventListener("mouseleave", () => cursorGlow.style.opacity = "0");
-}
-
-document.querySelectorAll(".spotlight").forEach(card => {
-  card.addEventListener("pointermove", e => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty("--mx", (e.clientX - r.left) + "px");
-    card.style.setProperty("--my", (e.clientY - r.top) + "px");
-  });
-});
-
-const reveals = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        io.unobserve(entry.target);
-      }
+const glow=document.getElementById('glow');
+if(matchMedia('(hover:hover)').matches){
+  addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.style.opacity=1},{passive:true});
+  document.body.addEventListener('mouseleave',()=>glow.style.opacity=0);
+  document.querySelectorAll('.tilt').forEach(el=>{
+    el.addEventListener('pointermove',e=>{
+      const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      el.style.setProperty('--ry',((x-.5)*5)+'deg');el.style.setProperty('--rx',((.5-y)*5)+'deg');
+      el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');
     });
-  }, {threshold:.1,rootMargin:"0px 0px -28px 0px"});
-  reveals.forEach((el,i) => {
-    el.style.transitionDelay = Math.min(i*28,180) + "ms";
-    io.observe(el);
+    el.addEventListener('pointerleave',()=>{el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg')});
   });
-} else {
-  reveals.forEach(el => el.classList.add("visible"));
 }
-
-async function loadRobloxAvatar(type,imgEl,fallbackEl,size){
-  try{
-    const url=`https://thumbnails.roblox.com/v1/users/${type}?userIds=${ROBLOX_USER_ID}&size=${size}&format=Png&isCircular=false`;
-    const res=await fetch(url);
-    if(!res.ok) throw new Error("thumbnail failed");
-    const json=await res.json();
-    const imageUrl=json?.data?.[0]?.imageUrl;
-    if(!imageUrl) throw new Error("missing image");
-    imgEl.src=imageUrl;
-    imgEl.onload=()=>{
-      imgEl.style.display="block";
-      fallbackEl.style.display="none";
-    };
-  }catch(e){
-    fallbackEl.textContent=type==="avatar"?"TymonTheLord":"7Z";
-  }
-}
-
-loadRobloxAvatar("avatar-headshot",document.getElementById("avatarHead"),document.getElementById("headFallback"),"420x420");
-loadRobloxAvatar("avatar",document.getElementById("avatarFull"),document.getElementById("fullFallback"),"420x420");
+const items=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.08});
+  items.forEach((x,i)=>{x.style.transitionDelay=Math.min(i*35,180)+'ms';io.observe(x)})
+}else items.forEach(x=>x.classList.add('show'));
 </script>
 </body>
 </html>
